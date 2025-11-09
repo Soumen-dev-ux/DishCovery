@@ -73,6 +73,36 @@ body {
   background-color: var(--surface);
 }
 
+/* <CHANGE> Added header-right for auth button styling */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-auth {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-auth:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-auth.logout {
+  background-color: #ef4444;
+}
+
+.btn-auth.logout:hover {
+  background-color: #dc2626;
+}
+
 .nav-toggle {
   display: none;
 }
@@ -139,6 +169,22 @@ body {
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary.btn-full {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary.btn-full:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-primary.btn-save {
+  background-color: var(--primary-color);
+  color: white;
+  margin-top: 24px;
 }
 
 .features {
@@ -219,6 +265,133 @@ body {
 
 .search-section .btn-primary:hover {
   background-color: var(--primary-hover);
+}
+
+/* <CHANGE> Added dietary profile styles */
+.dietary-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dietary-section {
+  background: var(--surface);
+  padding: 32px;
+  border-radius: 12px;
+  margin-bottom: 32px;
+  border: 1px solid var(--border-color);
+}
+
+.dietary-section h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+}
+
+.diet-options,
+.allergy-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.diet-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.diet-checkbox:hover {
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+.diet-checkbox input {
+  display: none;
+}
+
+.diet-checkbox input:checked + .checkmark {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.diet-checkbox input:checked + .checkmark::after {
+  display: block;
+}
+
+.checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  margin-right: 12px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.checkmark::after {
+  content: '';
+  display: none;
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.nutrition-goals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.goal-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.goal-item label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.goal-item input {
+  padding: 10px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.goal-item input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.profile-message {
+  text-align: center;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 6px;
+  min-height: 20px;
+}
+
+.profile-message.success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.profile-message.error {
+  background-color: #fee2e2;
+  color: #991b1b;
 }
 
 .loading {
@@ -377,10 +550,6 @@ body {
   width: 100%;
 }
 
-.contact-form .btn-primary:hover {
-  background-color: var(--primary-hover);
-}
-
 .contact-info {
   background: var(--surface);
   padding: 32px;
@@ -406,6 +575,43 @@ body {
 .info-item p {
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+/* <CHANGE> Added auth modal styles */
+.auth-modal-content {
+  max-width: 400px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.auth-tab-btn {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.auth-tab-btn.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.auth-form {
+  display: none;
+}
+
+.auth-form.active {
+  display: block;
 }
 
 .timer-widget {
@@ -609,6 +815,17 @@ body {
   color: var(--text-secondary);
 }
 
+.nutrition-badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
 .modal-section {
   margin-bottom: 32px;
 }
@@ -629,6 +846,32 @@ body {
   padding-left: 20px;
   color: var(--text-secondary);
   line-height: 2;
+}
+
+.nutrition-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: 8px;
+}
+
+.nutrition-item {
+  text-align: center;
+}
+
+.nutrition-item strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.nutrition-item span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
 }
 
 .footer {
@@ -693,13 +936,6 @@ body {
   color: white;
 }
 
-.footer-bottom {
-  text-align: center;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-}
-
 @media (max-width: 768px) {
   .header .container {
     justify-content: space-between;
@@ -752,6 +988,7 @@ body {
   .hamburger::after {
     bottom: 6px;
   }
+
   .hero-title {
     font-size: 2rem;
   }
@@ -786,5 +1023,19 @@ body {
 
   .page-title {
     font-size: 2rem;
+  }
+
+  .nutrition-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .diet-options,
+  .allergy-options {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-recipe-meta {
+    flex-direction: column;
+    gap: 12px;
   }
 }

@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipe Finder - Discover Delicious Recipes</title>
+    <title>DishCovery - Discover Delicious Recipes</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -15,15 +15,19 @@
           <a href="#home" class="nav-link active">Home</a>
           <a href="#finder" class="nav-link">Recipe Finder</a>
           <a href="#recommended" class="nav-link">Recommended</a>
+          <a href="#dietary" class="nav-link">Dietary Profile</a>
           <a href="#about" class="nav-link">About Us</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
-        <button class="nav-toggle" aria-label="toggle navigation">
-          <span class="hamburger"></span>
-        </button>
+        <div class="header-right">
+          <button id="auth-btn" class="btn-auth">Login</button>
+          <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+          </button>
+        </div>
       </div>
     </header>
-
+    
     <main id="main-content">
       <section id="home" class="page active">
         <div class="hero">
@@ -42,14 +46,14 @@
               <p>Find recipes by ingredients, cuisine, or meal type</p>
             </div>
             <div class="feature-card">
-              <div class="feature-icon">⏱️</div>
-              <h3>Cooking Timer</h3>
-              <p>Track your cooking time with our built-in timer</p>
+              <div class="feature-icon">🥗</div>
+              <h3>Dietary Filters</h3>
+              <p>Get recipes matching your dietary preferences</p>
             </div>
             <div class="feature-card">
-              <div class="feature-icon">⭐</div>
-              <h3>Recommendations</h3>
-              <p>Get personalized recipe recommendations</p>
+              <div class="feature-icon">📊</div>
+              <h3>Nutrition Info</h3>
+              <p>View detailed nutritional information for recipes</p>
             </div>
           </div>
         </div>
@@ -70,6 +74,92 @@
           </div>
 
           <div id="recipes-grid" class="recipes-grid"></div>
+        </div>
+      </section>
+
+      <section id="dietary" class="page">
+        <div class="container">
+          <h2 class="page-title">Your Dietary Profile</h2>
+          <p class="page-subtitle">Set your dietary preferences to get personalized recommendations</p>
+          
+          <div class="dietary-container">
+            <div class="dietary-section">
+              <h3>Diet Type</h3>
+              <div class="diet-options">
+                <label class="diet-checkbox">
+                  <input type="checkbox" name="diet" value="vegetarian" onchange="updateDietaryProfile()">
+                  <span class="checkmark"></span>
+                  🥬 Vegetarian
+                </label>
+                <label class="diet-checkbox">
+                  <input type="checkbox" name="diet" value="vegan" onchange="updateDietaryProfile()">
+                  <span class="checkmark"></span>
+                  🌱 Vegan
+                </label>
+                <label class="diet-checkbox">
+                  <input type="checkbox" name="diet" value="keto" onchange="updateDietaryProfile()">
+                  <span class="checkmark"></span>
+                  🥓 Keto
+                </label>
+                <label class="diet-checkbox">
+                  <input type="checkbox" name="diet" value="paleo" onchange="updateDietaryProfile()">
+                  <span class="checkmark"></span>
+                  🍗 Paleo
+                </label>
+              </div>
+            </div>
+
+            <div class="dietary-section">
+              <h3>Allergies & Restrictions</h3>
+              <div class="allergy-options">
+                <label class="diet-checkbox">
+                  <input type="checkbox" name="allergy" value="gluten-free" onchange="updateDietaryProfile()">
+                  <span class="checkmark"></span>
+                  🌾 Gluten-Free
+                </label>
+                <label class="diet-checkbox">
+                  <input type="checkbox" name="allergy" value="dairy-free" onchange="updateDietaryProfile()">
+                  <span class="checkmark"></span>
+                  🥛 Dairy-Free
+                </label>
+                <label class="diet-checkbox">
+                  <input type="checkbox" name="allergy" value="nut-free" onchange="updateDietaryProfile()">
+                  <span class="checkmark"></span>
+                  🥜 Nut-Free
+                </label>
+                <label class="diet-checkbox">
+                  <input type="checkbox" name="allergy" value="shellfish-free" onchange="updateDietaryProfile()">
+                  <span class="checkmark"></span>
+                  🦐 Shellfish-Free
+                </label>
+              </div>
+            </div>
+
+            <div class="dietary-section">
+              <h3>Nutrition Goals</h3>
+              <div class="nutrition-goals">
+                <div class="goal-item">
+                  <label for="calorie-target">Daily Calorie Target:</label>
+                  <input type="number" id="calorie-target" min="1000" max="3500" value="2000" onchange="updateDietaryProfile()">
+                </div>
+                <div class="goal-item">
+                  <label for="protein-target">Protein Goal (g):</label>
+                  <input type="number" id="protein-target" min="0" max="300" value="50" onchange="updateDietaryProfile()">
+                </div>
+                <div class="goal-item">
+                  <label for="carbs-target">Carbs Goal (g):</label>
+                  <input type="number" id="carbs-target" min="0" max="500" value="200" onchange="updateDietaryProfile()">
+                </div>
+                <div class="goal-item">
+                  <label for="fat-target">Fat Goal (g):</label>
+                  <input type="number" id="fat-target" min="0" max="200" value="65" onchange="updateDietaryProfile()">
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-primary btn-save" onclick="saveDietaryProfile()">Save Profile</button>
+            <div id="profile-message" class="profile-message"></div>
+          </div>
         </div>
       </section>
 
@@ -103,9 +193,9 @@
               <h3>What We Offer</h3>
               <ul>
                 <li>Thousands of recipes from various cuisines</li>
-                <li>Easy-to-use search functionality</li>
+                <li>Personalized dietary profile management</li>
+                <li>Nutrition information for every recipe</li>
                 <li>Built-in cooking timer for perfect timing</li>
-                <li>Detailed nutritional information</li>
                 <li>Step-by-step cooking instructions</li>
               </ul>
             </div>
@@ -167,6 +257,49 @@
       </section>
     </main>
 
+    <!-- <CHANGE> Added auth modals and timer widget -->
+    <div id="auth-modal" class="modal">
+      <div class="modal-content auth-modal-content">
+        <span class="close" onclick="closeAuthModal()">&times;</span>
+        <div class="auth-tabs">
+          <button class="auth-tab-btn active" onclick="switchAuthTab('login')">Login</button>
+          <button class="auth-tab-btn" onclick="switchAuthTab('register')">Register</button>
+        </div>
+
+        <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required />
+          </div>
+          <button type="submit" class="btn-primary btn-full">Login</button>
+        </form>
+
+        <form id="register-form" class="auth-form" onsubmit="handleRegister(event)">
+          <div class="form-group">
+            <label for="register-name">Full Name</label>
+            <input type="text" id="register-name" required />
+          </div>
+          <div class="form-group">
+            <label for="register-email">Email</label>
+            <input type="email" id="register-email" required />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Password</label>
+            <input type="password" id="register-password" required />
+          </div>
+          <div class="form-group">
+            <label for="register-confirm">Confirm Password</label>
+            <input type="password" id="register-confirm" required />
+          </div>
+          <button type="submit" class="btn-primary btn-full">Register</button>
+        </form>
+      </div>
+    </div>
+
     <div id="timer-widget" class="timer-widget">
       <div class="timer-header">
         <h3>Cooking Timer</h3>
@@ -211,7 +344,7 @@
             <ul>
               <li><a href="#home">Home</a></li>
               <li><a href="#finder">Recipe Finder</a></li>
-              <li><a href="#recommended">Recommended</a></li>
+              <li><a href="#dietary">Dietary Profile</a></li>
               <li><a href="#about">About Us</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -220,15 +353,9 @@
           <div class="footer-section">
             <h4>Follow Us</h4>
             <div class="social-links">
-              <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
-</svg></a>
-              <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-</svg></a>
-              <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
-  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-</svg></a>
+              <a href="#" class="social-link">f</a>
+              <a href="#" class="social-link">in</a>
+              <a href="#" class="social-link">𝕏</a>
             </div>
           </div>
         </div>
