@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Header Section -->
     <header class="header">
       <div class="container">
         <div class="logo">
@@ -19,6 +20,7 @@
           <a href="#about" class="nav-link">About Us</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
+        <!-- Header controls: Auth button and mobile nav toggle -->
         <div class="header-right">
           <button id="auth-btn" class="btn-auth">Login</button>
           <button class="nav-toggle" aria-label="toggle navigation">
@@ -28,8 +30,11 @@
       </div>
     </header>
     
+    <!-- Main Content Area for SPA-like navigation -->
     <main id="main-content">
+      <!-- Home Page Section -->
       <section id="home" class="page active">
+        <!-- Hero Section -->
         <div class="hero">
           <div class="container">
             <h2 class="hero-title">Discover Amazing Recipes</h2>
@@ -37,10 +42,11 @@
             <button class="btn-primary" onclick="navigateTo('finder')">Start Exploring</button>
           </div>
         </div>
-
+        
+        <!-- Features Section -->
         <div class="container">
           <div class="features">
-            <div class="feature-card">
+            <div class="feature-card">3
               <div class="feature-icon">🔍</div>
               <h3>Search Recipes</h3>
               <p>Find recipes by ingredients, cuisine, or meal type</p>
@@ -59,10 +65,12 @@
         </div>
       </section>
 
+      <!-- Recipe Finder Page Section -->
       <section id="finder" class="page">
         <div class="container">
           <h2 class="page-title">Recipe Finder</h2>
 
+          <!-- Search Input and Button -->
           <div class="search-section">
             <input type="text" id="search-input" class="search-input" placeholder="Search for recipes (e.g., chicken, pasta, salad)..." />
             <button class="btn-primary" onclick="searchRecipes()">Search</button>
@@ -73,10 +81,12 @@
             <p>Loading recipes...</p>
           </div>
 
+          <!-- Grid to display search results -->
           <div id="recipes-grid" class="recipes-grid"></div>
         </div>
       </section>
 
+      <!-- Dietary Profile Page Section -->
       <section id="dietary" class="page">
         <div class="container">
           <h2 class="page-title">Your Dietary Profile</h2>
@@ -104,7 +114,7 @@
                 <label class="diet-checkbox">
                   <input type="checkbox" name="diet" value="paleo" onchange="updateDietaryProfile()">
                   <span class="checkmark"></span>
-                  🍗 Paleo
+                  🍗 Non-Veg
                 </label>
               </div>
             </div>
@@ -130,7 +140,7 @@
                 <label class="diet-checkbox">
                   <input type="checkbox" name="allergy" value="shellfish-free" onchange="updateDietaryProfile()">
                   <span class="checkmark"></span>
-                  🦐 Shellfish-Free
+                  🦐 Seafood-Free
                 </label>
               </div>
             </div>
@@ -163,6 +173,7 @@
         </div>
       </section>
 
+      <!-- Recommended Recipes Page Section -->
       <section id="recommended" class="page">
         <div class="container">
           <h2 class="page-title">Recommended Recipes</h2>
@@ -174,10 +185,12 @@
             <button class="btn-primary" onclick="loadRecommendedRecipes()" style="margin: 0 8px;">🎲 Random</button>
           </div>
 
+          <!-- Grid to display recommended recipes -->
           <div id="recommended-grid" class="recipes-grid"></div>
         </div>
       </section>
 
+      <!-- About Us Page Section -->
       <section id="about" class="page">
         <div class="container">
           <h2 class="page-title">About Us</h2>
@@ -207,6 +220,7 @@
         </div>
       </section>
 
+      <!-- Contact Us Page Section -->
       <section id="contact" class="page">
         <div class="container">
           <h2 class="page-title">Contact Us</h2>
@@ -257,7 +271,7 @@
       </section>
     </main>
 
-    <!-- <CHANGE> Added auth modals and timer widget -->
+    <!-- Authentication Modal -->
     <div id="auth-modal" class="modal">
       <div class="modal-content auth-modal-content">
         <span class="close" onclick="closeAuthModal()">&times;</span>
@@ -266,6 +280,7 @@
           <button class="auth-tab-btn" onclick="switchAuthTab('register')">Register</button>
         </div>
 
+        <!-- Login Form -->
         <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
           <div class="form-group">
             <label for="login-email">Email</label>
@@ -278,6 +293,7 @@
           <button type="submit" class="btn-primary btn-full">Login</button>
         </form>
 
+        <!-- Registration Form -->
         <form id="register-form" class="auth-form" onsubmit="handleRegister(event)">
           <div class="form-group">
             <label for="register-name">Full Name</label>
@@ -300,6 +316,7 @@
       </div>
     </div>
 
+    <!-- Cooking Timer Widget -->
     <div id="timer-widget" class="timer-widget">
       <div class="timer-header">
         <h3>Cooking Timer</h3>
@@ -324,6 +341,7 @@
       </div>
     </div>
 
+    <!-- Recipe Detail Modal -->
     <div id="recipe-modal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -331,6 +349,7 @@
       </div>
     </div>
 
+    <!-- Footer Section -->
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
@@ -362,6 +381,7 @@
       </div>
     </footer>
 
+    <!-- Main JavaScript file for application logic -->
     <script src="app.js"></script>
   </body>
 </html>
